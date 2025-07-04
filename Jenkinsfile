@@ -11,6 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building.."
+                sh 'cd myapp'
                 sh 'PIP_BREAK_SYSTEM_PACKAGES=1 pip install -r requirements.txt'
             }
         }
