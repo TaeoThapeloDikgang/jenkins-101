@@ -11,11 +11,14 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building.."
-                sh 'pwd'
-                sh 'cd myapp'
-                sh 'pwd'
-                sh 'ls -al'
-                sh 'PIP_BREAK_SYSTEM_PACKAGES=1 pip install -r requirements.txt'
+                sh '''
+                    pwd
+                    ls -al
+                    cd myapp
+                    pwd
+                    ls -al
+                    PIP_BREAK_SYSTEM_PACKAGES=1 pip install -r requirements.txt
+                '''
             }
         }
         stage('Test') {
