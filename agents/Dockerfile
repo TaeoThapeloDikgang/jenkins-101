@@ -1,6 +1,6 @@
 FROM jenkins/agent:alpine-jdk21
 
-# line from remote - testing confilict manual
+# line from local - testing conflict 1
 
 USER root
 
