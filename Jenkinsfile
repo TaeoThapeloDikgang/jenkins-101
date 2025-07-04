@@ -11,8 +11,10 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building.."
+                sh 'pwd'
                 sh 'cd myapp'
-                sh 'pip install --upgrade pip'
+                sh 'pwd'
+                sh 'ls -al'
                 sh 'PIP_BREAK_SYSTEM_PACKAGES=1 pip install -r requirements.txt'
             }
         }
