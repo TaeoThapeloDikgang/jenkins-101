@@ -5,19 +5,15 @@ pipeline {
             }
       }
     triggers {
-        pollSCM '* * * * *'
+        pollSCM '*/1 * * * *'
     }
     stages {
         stage('Build') {
             steps {
                 echo "Building.."
                 sh '''
-                    pwd
-                    ls -al
                     cd myapp
-                    pwd
-                    ls -al
-                    PIP_BREAK_SYSTEM_PACKAGES=1 pip install -r requirements.txt
+                    pip install -r requirements.txt
                 '''
             }
         }
