@@ -1,7 +1,5 @@
 FROM jenkins/agent:alpine-jdk21
 
-# line from local - testing conflict 1
-
 USER root
 
 # Install Python and pip globally
