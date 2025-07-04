@@ -12,6 +12,7 @@ pipeline {
             steps {
                 echo "Building.."
                 sh 'cd myapp'
+                sh 'pip install --upgrade pip'
                 sh 'PIP_BREAK_SYSTEM_PACKAGES=1 pip install -r requirements.txt'
             }
         }
