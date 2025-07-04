@@ -1,5 +1,22 @@
-From jenkins/agent:alpine-jdk21
+FROM jenkins/agent:alpine-jdk21
+
 USER root
-RUN apk add python3
-RUN apk add py3-pip
+
+# Install Python and pip globally
+RUN apk add --no-cache python3 py3-pip
+
+# Create a virtual environment
+RUN python3 -m venv /opt/venv
+
+# Add venv to PATH temporarily for this build step
+# This ensures pip refers to the one inside /opt/venv
+ENV PATH="/opt/venv/bin:$PATH"
+
+# Upgrade pip *within the venv* while still root
+RUN pip install --upgrade pip
+
+# Now set permissions for the jenkins user
+RUN chown -R jenkins:jenkins /opt/venv
+
+# Switch back to the Jenkins user
 USER jenkins
