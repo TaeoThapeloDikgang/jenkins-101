@@ -11,12 +11,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building.."
-                sh 'cd myapp'
-                // Create and activate a virtual environment
-                sh 'python3 -m venv venv'
-                sh '. venv/bin/activate' // Note the dot and space for sourcing
-                // Install dependencies into the virtual environment
-                sh 'pip install -r requirements.txt'
+                sh 'PIP_BREAK_SYSTEM_PACKAGES=1 pip install -r requirements.txt'
             }
         }
         stage('Test') {
