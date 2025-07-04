@@ -11,20 +11,23 @@ pipeline {
         stage('Build') {
             steps {
                 echo "Building.."
-                sh '''
-                cd myapp
-                pip install -r requirements.txt
-                '''
+                sh 'cd myapp'
+                // Create and activate a virtual environment
+                sh 'python3 -m venv venv'
+                sh '. venv/bin/activate' // Note the dot and space for sourcing
+                // Install dependencies into the virtual environment
+                sh 'pip install -r requirements.txt'
             }
         }
         stage('Test') {
             steps {
                 echo "Testing.."
                 sh '''
-                cd myapp
-                python3 hello.py
-                python3 hello.py --name=Brad
+                    cd myapp
+                    python3 hello.py
+                    python3 hello.py --name=Brad
                 '''
+                
             }
         }
         stage('Deliver') {
