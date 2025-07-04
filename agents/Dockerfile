@@ -1,6 +1,7 @@
 FROM jenkins/agent:alpine-jdk21
 
 # line from remote - testing confilict manual
+# new line from remote
 
 USER root
 
