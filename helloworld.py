@@ -1,2 +1,2 @@
 
-print("Hello world Thapelo D")
+print("Hello world Thapelo Dikgang")
